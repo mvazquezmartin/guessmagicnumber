@@ -4,8 +4,9 @@ import { alert } from "./sweetAlert.js";
 class GuessNumberGame {
   constructor() {
     this.game = new GuessNumber();
-    this.magicNumber = this.game.magicNumber;
     this.inputPosition = 0;
+    this.magicNumber = this.game.magicNumber;
+    this.konami = this.game.konami;
     this.description = document.getElementById("description");
     this.resetButton = document.getElementById("resetButton");
     this.guessNumberInput = document.getElementById("guessNumber");
@@ -144,10 +145,11 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 let konamiSequence = "";
-const konamiCode = "0303456";
+const konamiCode = guessGame.konami;
 
 document.addEventListener("keyup", (event) => {
-  konamiSequence += event.key.toLowerCase(); // Obtener el texto tipeado en minúsculas
+  konamiSequence += event.key.toLowerCase();
+  
 
   // Comprobar si el texto incluye "quierolarta"
   if (konamiSequence.includes(konamiCode)) {
