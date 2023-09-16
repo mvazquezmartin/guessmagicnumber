@@ -4,6 +4,7 @@ import { alert } from "./sweetAlert.js";
 class GuessNumberGame {
   constructor() {
     this.game = new GuessNumber();
+    this.magicNumber = this.game.magicNumber;
     this.inputPosition = 0;
     this.description = document.getElementById("description");
     this.resetButton = document.getElementById("resetButton");
@@ -13,7 +14,7 @@ class GuessNumberGame {
 
     this.description.textContent = this.game.attemptsMsg();
 
-    this.description.textContent = this.game.attemptsMsg();
+    // this.description.textContent = this.game.attemptsMsg();
     this.guessButton.addEventListener("click", this.handleGuess.bind(this));
     this.guessNumberInput.addEventListener("keyup", (event) => {
       if (event.key === "Enter") {
@@ -85,6 +86,7 @@ class GuessNumberGame {
       arrowSpan.textContent = "";
       numberSpan.textContent = "";
     }
+    this.magicNumber = this.game.magicNumber;
   }
 
   renderNumberButtons() {
@@ -135,8 +137,28 @@ class GuessNumberGame {
   }
 }
 
+export const guessGame = new GuessNumberGame();
+
 document.addEventListener("DOMContentLoaded", () => {
-  new GuessNumberGame();
+  guessGame;
+});
+
+let konamiSequence = "";
+const konamiCode = "0303456";
+
+document.addEventListener("keyup", (event) => {
+  konamiSequence += event.key.toLowerCase(); // Obtener el texto tipeado en minúsculas
+
+  // Comprobar si el texto incluye "quierolarta"
+  if (konamiSequence.includes(konamiCode)) {
+    // Mostrar el número mágico en un cuadro de diálogo
+    alert(
+      "info",
+      "Magic Number",
+      `You are so weak like my friend the bojo: ${guessGame.magicNumber}`
+    );
+    konamiSequence = "";
+  }
 });
 
 // import { GuessNumber } from "./GuessNumber.js ";

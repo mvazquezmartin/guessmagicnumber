@@ -2,7 +2,7 @@ class GuessNumber {
   constructor(maxAttempts = 5, minNum = 0, maxNum = 99) {
     this.maxAttempts = maxAttempts;
     this.minNum = minNum;
-    this.maxNum = maxNum;
+    this.maxNum = maxNum;    
     this.reset();
   }
 
