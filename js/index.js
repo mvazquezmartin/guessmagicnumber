@@ -149,13 +149,12 @@ const konamiCode = guessGame.konami;
 
 document.addEventListener("keyup", (event) => {
   konamiSequence += event.key.toLowerCase();
-  
 
   // Comprobar si el texto incluye "quierolarta"
   if (konamiSequence.includes(konamiCode)) {
     // Mostrar el número mágico en un cuadro de diálogo
     alert(
-      "info",
+      "warning",
       "Magic Number",
       `You are so weak like my friend the bojo: ${guessGame.magicNumber}`
     );

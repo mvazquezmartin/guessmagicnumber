@@ -4,7 +4,7 @@ const alert = (status, title, message) => {
     title: title,
     text: message,
     color: "#bbb",
-  });
+  })
 };
 
 export { alert };
